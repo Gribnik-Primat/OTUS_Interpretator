@@ -11,8 +11,8 @@ class CommandInterpreter:
 
     def execute_command(self, command, player_id):
         if command['ID'] not in self.objects:
-            return "Объект не найден"
-        
+            raise PermissionError("Объект не найден")
+
         object_owner = self.objects[command['ID']]
         if object_owner != player_id:
             raise PermissionError("Вы не можете управлять этим объектом")
